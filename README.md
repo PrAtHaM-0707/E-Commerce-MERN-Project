@@ -89,6 +89,18 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 --- 
 
+### 📜 Milestone 7: Product Card Component & Homepage
+✅ Tasks Completed in Milestone 7:
+
+- 🛠 Developed a reusable Product Card Component for displaying products.
+
+- 📄 Designed the homepage layout to showcase product listings.
+
+- 🔧 Implemented dynamic components that accept product details as props.
+
+- 🔁 Used array mapping to iterate over product lists and render them dynamically.
+
+--- 
 
 ### 🛠️ Tech Stack
 
