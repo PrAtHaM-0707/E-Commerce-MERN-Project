@@ -152,6 +152,22 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 --- 
 
+### 📜 Milestone 12: Edit Product Functionality
+✅ Tasks Completed:
+
+- ✏️ Added functionality to edit uploaded products.
+
+- 🛠️ Created a backend API endpoint to update product details in MongoDB.
+
+- 🖼️ Modified the frontend to include an edit button on product cards.
+
+- 🔄 Pre-filled the edit form with the existing product data for a seamless editing experience.
+
+- ✅ Saved the updated product details back to the database.
+
+--- 
+
+
 ### 🛠️ Tech Stack
 
 # Frontend:
