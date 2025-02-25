@@ -42,6 +42,14 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 --- 
 
+### 📜 Milestone 4: User Model, Controller, and File Uploads
+✅ Tasks Completed:
+👤 Created a User Model to define user data structure in MongoDB.
+🛠️ Developed a User Controller to handle user-related operations (e.g., registration, login).
+📤 Integrated Multer for file uploads (profile pictures, product images).
+
+--- 
+
 ### 🛠️ Tech Stack
 
 # Frontend:
