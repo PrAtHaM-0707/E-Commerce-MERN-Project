@@ -102,6 +102,19 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 --- 
 
+### 📜 Milestone 8: Product Input Form
+✅ Tasks Completed in Milestone 8:
+
+- 📝 Created a frontend form to allow users to add new products.
+
+- 🖼️ Enabled multiple image uploads for products.
+
+- 🎨 Designed an intuitive UI for product input.
+
+- 🔗 Connected the form to the backend API for storing product data.
+
+--- 
+
 ### 🛠️ Tech Stack
 
 # Frontend:
