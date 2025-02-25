@@ -115,6 +115,19 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 --- 
 
+### 📜 Milestone 9: Product Schema & API Endpoint
+✅ Tasks Completed in Milestone 9:
+
+- 🛠️ Created a Mongoose schema to define the product structure (e.g., name, description, price, image URL).
+
+- 🔎 Ensured proper validation for required fields and correct data types.
+
+- 🌐 Built a POST endpoint to receive and store product details in MongoDB.
+
+- ✅ Implemented data validation before saving to maintain data integrity.
+
+---
+
 ### 🛠️ Tech Stack
 
 # Frontend:
