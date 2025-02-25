@@ -139,6 +139,19 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 --- 
 
+### 📜 Milestone 11: Personalized Products Page
+✅ Tasks Completed in Milestone 11:
+
+- 🌟 Created a "My Products" page to display products added by the logged-in user.
+
+- 📝 Implemented a backend API endpoint to filter and fetch products based on user email.
+
+- 🔙 Fetched and displayed filtered products dynamically on the frontend.
+
+- 🖼️ Used the product card component to showcase user-specific products.
+
+--- 
+
 ### 🛠️ Tech Stack
 
 # Frontend:
