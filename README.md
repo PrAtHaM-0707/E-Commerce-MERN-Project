@@ -167,6 +167,18 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 --- 
 
+### 📜 Milestone 13: Delete Product Functionality
+✅ Tasks Completed in Milestone 13:
+
+- 🗑️ Implemented the delete product feature on the frontend.
+
+- 🚀 Created a backend API endpoint to remove a product from MongoDB using its ID.
+
+- 🖼️ Added a delete button on the product card in the frontend.
+
+- 🔄 Updated the UI dynamically after a product is deleted.
+
+--- 
 
 ### 🛠️ Tech Stack
 
