@@ -22,7 +22,11 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ---
 
 ### 
-
+ 
+### ✅ Milestone 1: Initializing the Repository
+📂 Set up a GitHub repository named Ecommerce-Follow-Along.
+📝 Added a README.md file to document the project.
+🏗️ Established the basic project structure and committed the initial files. 
 
 ### 🛠️ Tech Stack
 
