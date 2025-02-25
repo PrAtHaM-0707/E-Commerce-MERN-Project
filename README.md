@@ -128,6 +128,17 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 ---
 
+### 📜 Milestone 10: Display Products at Frontend
+✅ Tasks Completed in Milestone 10:
+
+- 📝 Created a GET endpoint to fetch all product data from the database.
+
+- 🔙 Implemented frontend functionality to retrieve product data.
+
+- 🖼️ Displayed products dynamically by passing them to the product card component.
+
+--- 
+
 ### 🛠️ Tech Stack
 
 # Frontend:
