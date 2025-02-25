@@ -33,6 +33,15 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 ---
 
+### 📜 Milestone 3: Backend Organization and Database Setup
+✅ Tasks Completed:
+📂 Organized the backend folder structure efficiently.
+🌐 Set up a Node.js server to handle API requests.
+🟢 Connected the application to MongoDB for database storage.
+🛠️ Implemented basic error handling for a smooth backend operation.
+
+--- 
+
 ### 🛠️ Tech Stack
 
 # Frontend:
