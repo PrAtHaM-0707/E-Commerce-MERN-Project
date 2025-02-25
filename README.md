@@ -76,6 +76,19 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 --- 
 
+### 📜 Milestone 6: Login Authentication
+✅ Tasks Completed:
+
+- 🔑 Created a backend endpoint for user login.
+
+- 🔍 Implemented password validation and encryption.
+
+- 🔐 Used bcrypt to securely store and verify passwords.
+
+- ⚠️ Added error handling for failed login attempts.
+
+--- 
+
 
 ### 🛠️ Tech Stack
 
