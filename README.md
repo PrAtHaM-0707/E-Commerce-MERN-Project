@@ -197,6 +197,23 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 --- 
 
+### 📜 Milestone 15: Navbar Component
+✅ Tasks Completed in Milestone 15:
+
+- 🏗️ Created a reusable Navbar component for navigation across all pages.
+
+- 🔗 Implemented navigation links for Home, My Products, Add Product, Login, and Sign Up.
+
+- 🎨 Styled the Navbar using Tailwind CSS for a modern and responsive UI.
+
+- 📌 Used React Router's <Link> for seamless page transitions.
+
+- 🚀 Integrated the Navbar into App.jsx so it appears on every page.
+
+- 🔄 Ensured proper UI updates when navigating between different sections.
+
+---
+
 
 ### 🛠️ Tech Stack
 
