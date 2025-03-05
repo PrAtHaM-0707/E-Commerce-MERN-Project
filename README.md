@@ -214,6 +214,18 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 ---
 
+### 📜 Milestone 16: Product Info Page
+✅ Tasks Completed:
+
+- 📝 Created a Product Info page that displays all product details.
+
+- 🔗 Set up a dynamic route (`/product/:id`) for individual products.
+
+- 🔢 Added a quantity selector for users.
+
+- 🛒 Implemented an "Add to Cart" button (cart functionality to be added later).
+
+---
 
 ### 🛠️ Tech Stack
 
