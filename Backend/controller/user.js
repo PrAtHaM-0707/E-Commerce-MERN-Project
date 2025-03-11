@@ -6,10 +6,12 @@ const router = express.Router();
 const { upload } = require("../multer");
 const ErrorHandler = require("../utils/ErrorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncError");
-// const jwt = require("jsonwebtoken");
-// const sendMail = require("../utils/sendMail");
 const bcrypt = require("bcryptjs");
 require("dotenv").config();
+
+// Mount user routes (including /profile)
+const userRoutes = require("../routes/user");
+router.use("/", userRoutes);
 
 router.post(
     "/create-user",
@@ -34,7 +36,7 @@ router.post(
   
       let fileUrl = "";
       if (req.file) {
-        fileUrl = path.join("uploads", req.file.filename); // Construct file URL
+        fileUrl = path.join("uploads", req.file.filename);
       }
   
       const hashedPassword = await bcrypt.hash(password, 10);
@@ -43,16 +45,16 @@ router.post(
         email,
         password: hashedPassword,
         avatar: {
-          public_id: req.file?.filename || "",
-          url: fileUrl,
+          public_id: req.file?.filename || "default_avatar",
+          url: fileUrl || "/uploads/default_avatar.jpg",
         },
       });
   
       res.status(201).json({ success: true, user });
     })
-  );
+);
 
-  router.post("/login", catchAsyncErrors(async (req, res, next) => {
+router.post("/login", catchAsyncErrors(async (req, res, next) => {
     console.log("Logging in user...");
     const { email, password } = req.body;
     if (!email || !password) {
@@ -64,7 +66,7 @@ router.post(
     }
     const isPasswordMatched = await bcrypt.compare(password, user.password);
     console.log("At Auth", "Password: ", password, "Hash: ", user.password);
-    console.log(isPasswordMatched)
+    console.log(isPasswordMatched);
     if (!isPasswordMatched) {
         return next(new ErrorHandler("Invalid Email or Password", 401));
     }
@@ -74,5 +76,5 @@ router.post(
         user,
     });
 }));
+
 module.exports = router;
- 

@@ -209,6 +209,17 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 ---
 
+### 📜 Milestone 20: Profile Page and User Data Endpoint
+✅ Tasks Completed:
+
+- 🌐 Created a `GET /api/v2/user/profile` endpoint to fetch user data (name, email, avatar, addresses).
+- 🖥️ Developed a frontend Profile page to display user data.
+- 📋 Displayed profile photo, name, and email in one section.
+- 🏠 Displayed addresses in another section with an "Add Address" button; shows "No address found" if none exist.
+- ✅ Tested the profile page to ensure user data is displayed correctly.
+
+---
+
 ### 🛠️ Tech Stack
 
 # Frontend:
