@@ -9,6 +9,7 @@ const Navbar = () => {
         <li><Link to="/" className="hover:text-gray-400">Home</Link></li>
         <li><Link to="/myproducts" className="hover:text-gray-400">My Products</Link></li>
         <li><Link to="/create-product" className="hover:text-gray-400">Add Product</Link></li>
+        <li><Link to="/cart" className="hover:text-gray-400">Cart</Link></li> {/* Add Cart link */}
         <li><Link to="/login" className="hover:text-gray-400">Login</Link></li>
         <li><Link to="/signup" className="hover:text-gray-400">Sign Up</Link></li>
       </ul>

@@ -198,6 +198,17 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 ---
 
+### 📜 Milestone 19: Cart Page UI and Quantity Management
+✅ Tasks Completed:
+
+- 🖥️ Created a frontend Cart page to display products using the `GET /api/cart` endpoint.
+- 🔧 Added `+` and `-` buttons for each product to increase and decrease quantities.
+- 🌐 Developed a `PUT /api/cart/:productId` endpoint to handle quantity updates.
+- 🔄 Implemented frontend logic to call the quantity update endpoint and refresh the cart display.
+- ✅ Tested the cart page and quantity updates to ensure seamless functionality.
+
+---
+
 ### 🛠️ Tech Stack
 
 # Frontend:
