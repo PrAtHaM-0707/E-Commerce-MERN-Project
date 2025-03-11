@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LoginPage, SignupPage, Home, CreateProduct, MyProducts } from "./Routes";
 import ProductInfo from "./pages/ProductInfo"; 
-import Cart from "./pages/Cart"; // Import the new Cart page
-import Navbar from "./components/auth/Navbar"; // Adjusted path based on your structure
+import Cart from "./pages/Cart"; 
+import Profile from "./pages/Profile"; 
+import Navbar from "./components/auth/Navbar";
 import "./App.css";
 
 const App = () => {
@@ -16,7 +17,8 @@ const App = () => {
         <Route path="/create-product" element={<CreateProduct />} />
         <Route path="/myproducts" element={<MyProducts />} />
         <Route path="/product/:id" element={<ProductInfo />} />
-        <Route path="/cart" element={<Cart />} /> {/* Add Cart route */}
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );
