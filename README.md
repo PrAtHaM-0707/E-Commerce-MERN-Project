@@ -152,7 +152,7 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 - 🗑️ Used MongoDB’s deleteOne() method to remove the product from the database.
 - 🚀 Updated the frontend to send a DELETE request when the delete button is clicked.
 - 🔄 Ensured the UI updates dynamically after a product is deleted.
-- ⚠️ Implemented error handling to manage failed deletion attempts.
+- ⚠️ Implemented error handling for failed deletion attempts.
 
 --- 
 
@@ -186,6 +186,15 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 - 🔄 Implemented logic to update quantity if the product exists or add a new entry if it doesn’t.
 - ✅ Tested the endpoint to ensure cart data is saved in MongoDB.
 - 🛠️ Fixed model overwrite issue using a caching pattern to prevent recompilation.
+
+---
+
+### 📜 Milestone 18: Fetch Cart Products for Cart Page
+✅ Tasks Completed:
+
+- 🌐 Created a GET endpoint (`/api/cart`) to fetch all products in the user's cart.
+- 🔄 Used Mongoose's `populate` method to retrieve full product details (e.g., name, price, image) for each cart item.
+- ✅ Tested the endpoint to ensure the cart data is returned with populated product details for display on the cart page.
 
 ---
 
