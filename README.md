@@ -21,9 +21,7 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ✅ Tasks Completed:
 
 - 📂 Set up a GitHub repository named Ecommerce-Follow-Along.
-
 - 📝 Added a README.md file to document the project.
-
 - 🏗️ Established the basic project structure and committed the initial files. 
 
 --- 
@@ -32,11 +30,8 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ✅ Tasks Completed:
 
 - 🔗 Used the same GitHub repository from Milestone 1.
-
 - 🔐 Implemented the Login Page UI.
-
 - ⚙️ Set up basic authentication mechanisms.
-
 - 📤 Committed and pushed all changes to GitHub.
 
 ---
@@ -45,11 +40,8 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ✅ Tasks Completed:
 
 - 📂 Organized the backend folder structure efficiently.
-
 - 🌐 Set up a Node.js server to handle API requests.
-
 - 🟢 Connected the application to MongoDB for database storage.
-
 - 🛠️ Implemented basic error handling for a smooth backend operation.
 
 --- 
@@ -58,9 +50,7 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ✅ Tasks Completed:
 
 - 👤 Created a User Model to define user data structure in MongoDB.
-
 - 🛠️ Developed a User Controller to handle user-related operations (e.g., registration, login).
-
 - 📤 Integrated Multer for file uploads (profile pictures, product images).
 
 --- 
@@ -69,9 +59,7 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ✅ Tasks Completed:
 
 - 🎨 Designed the frontend UI for user registration.
-
 - ✅ Implemented form validation to ensure correct user input before submission.
-
 - 🔗 Connected the registration form to the backend API for user sign-ups.
 
 --- 
@@ -80,11 +68,8 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ✅ Tasks Completed:
 
 - 🔑 Created a backend endpoint for user login.
-
 - 🔍 Implemented password validation and encryption.
-
 - 🔐 Used bcrypt to securely store and verify passwords.
-
 - ⚠️ Added error handling for failed login attempts.
 
 --- 
@@ -93,11 +78,8 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ✅ Tasks Completed in Milestone 7:
 
 - 🛠 Developed a reusable Product Card Component for displaying products.
-
 - 📄 Designed the homepage layout to showcase product listings.
-
 - 🔧 Implemented dynamic components that accept product details as props.
-
 - 🔁 Used array mapping to iterate over product lists and render them dynamically.
 
 --- 
@@ -106,11 +88,8 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ✅ Tasks Completed in Milestone 8:
 
 - 📝 Created a frontend form to allow users to add new products.
-
 - 🖼️ Enabled multiple image uploads for products.
-
 - 🎨 Designed an intuitive UI for product input.
-
 - 🔗 Connected the form to the backend API for storing product data.
 
 --- 
@@ -119,11 +98,8 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ✅ Tasks Completed in Milestone 9:
 
 - 🛠️ Created a Mongoose schema to define the product structure (e.g., name, description, price, image URL).
-
 - 🔎 Ensured proper validation for required fields and correct data types.
-
 - 🌐 Built a POST endpoint to receive and store product details in MongoDB.
-
 - ✅ Implemented data validation before saving to maintain data integrity.
 
 ---
@@ -132,9 +108,7 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ✅ Tasks Completed in Milestone 10:
 
 - 📝 Created a GET endpoint to fetch all product data from the database.
-
 - 🔙 Implemented frontend functionality to retrieve product data.
-
 - 🖼️ Displayed products dynamically by passing them to the product card component.
 
 --- 
@@ -143,11 +117,8 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ✅ Tasks Completed in Milestone 11:
 
 - 🌟 Created a "My Products" page to display products added by the logged-in user.
-
 - 📝 Implemented a backend API endpoint to filter and fetch products based on user email.
-
 - 🔙 Fetched and displayed filtered products dynamically on the frontend.
-
 - 🖼️ Used the product card component to showcase user-specific products.
 
 --- 
@@ -156,13 +127,9 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ✅ Tasks Completed:
 
 - ✏️ Added functionality to edit uploaded products.
-
 - 🛠️ Created a backend API endpoint to update product details in MongoDB.
-
 - 🖼️ Modified the frontend to include an edit button on product cards.
-
 - 🔄 Pre-filled the edit form with the existing product data for a seamless editing experience.
-
 - ✅ Saved the updated product details back to the database.
 
 --- 
@@ -171,11 +138,8 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ✅ Tasks Completed in Milestone 13:
 
 - 🗑️ Implemented the delete product feature on the frontend.
-
 - 🚀 Created a backend API endpoint to remove a product from MongoDB using its ID.
-
 - 🖼️ Added a delete button on the product card in the frontend.
-
 - 🔄 Updated the UI dynamically after a product is deleted.
 
 --- 
@@ -184,15 +148,10 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ✅ Tasks Completed in Milestone 14:
 
 - 🛠️ Implemented a delete button on the product card.
-
 - 🔗 Created a backend API endpoint to delete products using their ID.
-
 - 🗑️ Used MongoDB’s deleteOne() method to remove the product from the database.
-
 - 🚀 Updated the frontend to send a DELETE request when the delete button is clicked.
-
 - 🔄 Ensured the UI updates dynamically after a product is deleted.
-
 - ⚠️ Implemented error handling to manage failed deletion attempts.
 
 --- 
@@ -201,15 +160,10 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ✅ Tasks Completed in Milestone 15:
 
 - 🏗️ Created a reusable Navbar component for navigation across all pages.
-
 - 🔗 Implemented navigation links for Home, My Products, Add Product, Login, and Sign Up.
-
 - 🎨 Styled the Navbar using Tailwind CSS for a modern and responsive UI.
-
 - 📌 Used React Router's <Link> for seamless page transitions.
-
 - 🚀 Integrated the Navbar into App.jsx so it appears on every page.
-
 - 🔄 Ensured proper UI updates when navigating between different sections.
 
 ---
@@ -218,12 +172,20 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ✅ Tasks Completed:
 
 - 📝 Created a Product Info page that displays all product details.
-
 - 🔗 Set up a dynamic route (`/product/:id`) for individual products.
-
 - 🔢 Added a quantity selector for users.
-
 - 🛒 Implemented an "Add to Cart" button (cart functionality to be added later).
+
+---
+
+### 📜 Milestone 17: Cart Functionality
+✅ Tasks Completed:
+
+- ✏️ Updated the `User` schema to include a `cart` field for storing product IDs and quantities.
+- 🌐 Created a POST endpoint (`/api/cart/add`) to add products to the user's cart.
+- 🔄 Implemented logic to update quantity if the product exists or add a new entry if it doesn’t.
+- ✅ Tested the endpoint to ensure cart data is saved in MongoDB.
+- 🛠️ Fixed model overwrite issue using a caching pattern to prevent recompilation.
 
 ---
 
@@ -238,4 +200,3 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 🖥️ Node.js / Express.js
 🟢 MongoDB
 🔑 JWT Authentication
-
