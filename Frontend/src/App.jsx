@@ -19,7 +19,7 @@ const App = () => {
         <Route path="/product/:id" element={<ProductInfo />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/add-address" element={<AddAddress />} /> {/* Added new route */}
+        <Route path="/add-address" element={<AddAddress />} />
       </Routes>
     </BrowserRouter>
   );

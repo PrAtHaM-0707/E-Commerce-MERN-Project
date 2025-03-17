@@ -6,11 +6,15 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
 const cartRoutes = require("./routes/cart");
+const userRoutes = require("./routes/user");
 
 app.use("/api/cart", cartRoutes);
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5173", // Frontend URL
+  credentials: true, // Allow cookies (JWT)
+}));
 app.use("/", express.static("uploads"));
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 
@@ -20,8 +24,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
     });
 }
 
-const user = require("./controller/user");
-app.use("/api/v2/user", user);
+app.use("/api/v2/user", userRoutes);
 //app.use("/api/v2/product", product);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/products", express.static(path.join(__dirname, "products")));
