@@ -220,6 +220,20 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 ---
 
+### 📜 Milestone 21: Address Form Frontend Page
+✅ Tasks Completed in Milestone 21:
+
+- 📝 Created a frontend `AddAddress` page to allow users to input address details.
+- 🏠 Included fields for country, city, address line 1, address line 2 (optional), ZIP code, and address type (Home/Work/Other).
+- 🔄 Used React’s `useState` hook to manage the form input state.
+- ✅ Added basic form validation with error messages for required fields.
+- 🔗 Added a route (`/add-address`) in `App.jsx` to render the `AddAddress` page.
+- 🚀 Updated the Profile page to navigate to `/add-address` when the "Add Address" button is clicked using React Router’s `Link`.
+- 🎨 Styled the form using Tailwind CSS to match the app’s design (e.g., Profile page styling).
+- ✅ Tested the form to ensure inputs are captured, validation works, and navigation is seamless.
+
+---
+
 ### 🛠️ Tech Stack
 
 # Frontend:

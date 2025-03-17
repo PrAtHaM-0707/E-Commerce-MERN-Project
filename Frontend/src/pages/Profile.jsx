@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // Added import for Link
 import axios from "axios";
 
 const Profile = () => {
@@ -63,9 +64,11 @@ const Profile = () => {
             ))}
           </div>
         )}
-        <button className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-          Add Address
-        </button>
+        <Link to="/add-address">
+          <button className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+            Add Address
+          </button>
+        </Link>
       </div>
     </div>
   );
