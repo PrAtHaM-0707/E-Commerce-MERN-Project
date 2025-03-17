@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { LoginPage, SignupPage, Home, CreateProduct, MyProducts } from "./Routes";
+import { LoginPage, SignupPage, Home, CreateProduct, MyProducts, AddAddress } from "./Routes";
 import ProductInfo from "./pages/ProductInfo"; 
 import Cart from "./pages/Cart"; 
 import Profile from "./pages/Profile"; 
@@ -19,6 +19,7 @@ const App = () => {
         <Route path="/product/:id" element={<ProductInfo />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/add-address" element={<AddAddress />} /> {/* Added new route */}
       </Routes>
     </BrowserRouter>
   );
