@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // Added import for Link
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Profile = () => {

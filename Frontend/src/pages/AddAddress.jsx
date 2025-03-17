@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function AddAddress() {
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ function AddAddress() {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
@@ -51,10 +52,16 @@ function AddAddress() {
       return;
     }
 
-    console.log('Address submitted:', address);
-    // TODO: Send address to backend API (to be implemented in a future milestone)
-    // For now, navigate back to the Profile page after submission
-    navigate('/profile');
+    try {
+      const response = await axios.post('http://localhost:5000/api/v2/user/address', address, {
+        withCredentials: true, // Send cookies for authentication
+      });
+      console.log('Address saved:', response.data);
+      navigate('/profile');
+    } catch (error) {
+      console.error('Error saving address:', error.response?.data?.message || error.message);
+      setErrors({ submit: error.response?.data?.message || 'Failed to save address' });
+    }
   };
 
   return (
@@ -176,13 +183,14 @@ function AddAddress() {
             {errors.addressType && <p className="text-red-500 text-sm mt-1">{errors.addressType}</p>}
           </div>
 
-          {/* Submit Button */}
+          {/* Submit Button and Error Message */}
           <button
             type="submit"
             className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >
             Add Address
           </button>
+          {errors.submit && <p className="text-red-500 text-sm mt-2 text-center">{errors.submit}</p>}
         </form>
       </div>
     </div>

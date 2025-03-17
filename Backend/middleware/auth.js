@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../model/User");
 
 const auth = catchAsyncErrors(async (req, res, next) => {
-  const { token } = req.cookies; // Assuming token is stored in cookies (common in your setup)
+  const { token } = req.cookies;
 
   if (!token) {
     return next(new ErrorHandler("Please login to access this resource", 401));
@@ -20,8 +20,8 @@ const auth = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("User not found", 404));
   }
 
-  req.user = user; // Attach user to request
-  next(); // Proceed to the next middleware/route handler
+  req.user = user;
+  next();
 });
 
-module.exports = auth; // Export the function directly
+module.exports = auth;
