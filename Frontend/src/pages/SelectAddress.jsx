@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SelectAddress = () => {
   const [addresses, setAddresses] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchAddresses = async () => {
@@ -26,9 +28,21 @@ const SelectAddress = () => {
     setSelectedAddress(addressId);
   };
 
-  const handleConfirm = () => {
-    console.log("Selected Address Index:", selectedAddress);
-    // Placeholder for order placement logic in future milestones
+  const handleConfirm = async () => {
+    if (selectedAddress === null) return;
+
+   
+    try {
+      const response = await axios.get("http://localhost:5000/api/cart", {
+        withCredentials: true,
+      });
+      const cart = response.data.cart;
+      navigate("/order-confirmation", {
+        state: { selectedAddress: addresses[selectedAddress], cart },
+      });
+    } catch (error) {
+      console.error("Error fetching cart for confirmation:", error);
+    }
   };
 
   if (loading) return <p className="text-center text-gray-500">Loading addresses...</p>;
