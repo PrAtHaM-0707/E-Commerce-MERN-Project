@@ -216,7 +216,7 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ### 📜 Milestone 22: Backend Endpoint for Saving Address
 ✅ Tasks Completed in Milestone 22:
 - 🌐 Created a `POST /api/v2/user/address` endpoint in `routes/user.js` to receive address data from the frontend.
-- 🛠️ Implemented the `addAddress` function in `controllers/user.js` to add the new address to the `addresses` array in the `User` model.
+- 🛠️ Implemented the `addAddress` function in `controller/user.js` to add the new address to the `addresses` array in the `User` model.
 - 🔒 Protected the endpoint with JWT authentication using the `auth` middleware.
 - ✅ Updated `AddAddress.jsx` to send the address data to the new endpoint using `axios` with `withCredentials: true`.
 - 🧪 Tested the endpoint to confirm addresses are saved to the database and displayed on the `Profile` page.
@@ -245,7 +245,7 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 ### 📜 Milestone 25: Backend Endpoint for Placing Orders
 ✅ Tasks Completed:
-- 🌐 Created a `POST /api/v2/order/place` endpoint in `routes/order.js` and `controllers/order.js`.
+- 🌐 Created a `POST /api/v2/order/place` endpoint in `routes/order.js` and `controller/order.js`.
 - 🛠️ Implemented logic to retrieve user `_id` by email and create separate orders for each product with the same address.
 - 📦 Used the `Order` schema to store order details in MongoDB.
 - 🔗 Updated `server.js` to register the new order routes.
@@ -255,7 +255,7 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 ### 📜 Milestone 26: Backend Endpoint for Retrieving User Orders
 ✅ Tasks Completed:
-- 🌐 Created a `POST /api/v2/order/orders` endpoint in `routes/order.js` and `controllers/order.js`.
+- 🌐 Created a `POST /api/v2/order/orders` endpoint in `routes/order.js` and `controller/order.js`.
 - 🛠️ Implemented logic to retrieve user `_id` by email and fetch all orders for that user.
 - 📦 Used the `Order` schema to query orders from MongoDB, populating product details (name, price).
 - 🔗 Added the endpoint to return all user orders in the response.
@@ -274,7 +274,7 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ### 📜 Milestone 28: Cancel Order Functionality
 ✅ Tasks Completed:
 - 📝 Added a "Cancel Order" button to each order in `MyOrders.jsx`, displayed only if the order isn’t "Cancelled".
-- 🌐 Created a `PUT /api/v2/order/cancel/:orderId` endpoint in `routes/order.js` and `controllers/order.js`.
+- 🌐 Created a `PUT /api/v2/order/cancel/:orderId` endpoint in `routes/order.js` and `controller/order.js`.
 - 🛠️ Implemented logic to update an order’s status to "Cancelled" using the order ID.
 - 🔗 Updated the frontend to call the cancel endpoint and reflect the status change.
 
@@ -286,6 +286,25 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 - 🌐 Set up UI to display a PayPal placeholder when "Online Payment" is selected.
 - 🛠️ Configured COD orders to use the `/place` endpoint; online payment logs a placeholder message.
 - 🔗 Used existing PayPal sandbox accounts and obtained the Client ID for future integration.
+
+---
+
+### 📜 Milestone 30: PayPal Payment Integration
+✅ Tasks Completed:
+- 📝 Installed `react-paypal-js` and integrated `PayPalScriptProvider` and `PayPalButtons` in `OrderConfirmation.jsx`.
+- 🌐 Used the PayPal Sandbox Client ID to enable online payments via PayPal API.
+- 🛠️ Updated the `Order` schema and `placeOrder` endpoint to store `paymentMethod` and `paymentDetails`.
+- 🔗 Handled COD and PayPal payments, redirecting to `/order-success` on completion.
+
+---
+
+### 📜 Milestone 31: Global State Management with Redux
+✅ Tasks Completed:
+- 📝 Installed `react-redux`, `redux`, and `@reduxjs/toolkit` in the frontend folder.
+- 🌐 Created a `store` folder in `frontend/src/` with `store.js` and `userActions.js`.
+- 🛠️ Configured a Redux store in `store.js` with a `userReducer` to manage the user’s email.
+- 🔗 Defined a `setEmail` action in `userActions.js` to update the email state.
+- 📦 Wrapped the `App` component in a `Provider` in `frontend/src/index.js` to connect the store to the app.
 
 ---
 

@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
   origin: "http://localhost:5173",
-  credentials: true, 
+  credentials: true,
 }));
 app.use("/", express.static("uploads"));
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
@@ -26,7 +26,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 }
 
 app.use("/api/v2/user", userRoutes);
-app.use("/api/v2/order", orderRoutes); 
+app.use("/api/v2/order", orderRoutes);
 //app.use("/api/v2/product", product);
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/products", express.static(path.join(__dirname, "products")));
