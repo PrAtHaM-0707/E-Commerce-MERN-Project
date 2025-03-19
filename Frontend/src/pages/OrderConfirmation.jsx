@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -6,6 +6,7 @@ const OrderConfirmation = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
   const { selectedAddress, cart } = state || {};
+  const [paymentMethod, setPaymentMethod] = useState("cod"); // Default to COD
 
   if (!selectedAddress || !cart) {
     return <p className="text-center text-gray-500">No order data available.</p>;
@@ -18,7 +19,7 @@ const OrderConfirmation = () => {
   const handlePlaceOrder = async () => {
     try {
       const orderData = {
-        email: "user@example.com", // Replace with actual user email (e.g., from auth context)
+        email: "user@example.com", // Replace with actual user email later
         products: cart.map((item) => ({
           productId: item.productId._id,
           quantity: item.quantity,
@@ -27,14 +28,18 @@ const OrderConfirmation = () => {
         address: selectedAddress,
       };
 
-      const response = await axios.post(
-        "http://localhost:5000/api/v2/order/place",
-        orderData,
-        { withCredentials: true }
-      );
-
-      console.log("Order response:", response.data);
-      navigate("/order-success"); // Placeholder route
+      if (paymentMethod === "cod") {
+        const response = await axios.post(
+          "http://localhost:5000/api/v2/order/place",
+          orderData,
+          { withCredentials: true }
+        );
+        console.log("COD Order response:", response.data);
+        navigate("/order-success"); // Placeholder route
+      } else {
+        console.log("Online payment selected - PayPal integration pending");
+        // PayPal logic to be added in Milestone 30
+      }
     } catch (error) {
       console.error("Error placing order:", error);
     }
@@ -80,6 +85,44 @@ const OrderConfirmation = () => {
       <div className="mb-6">
         <h2 className="text-xl font-semibold mb-2">Total Amount</h2>
         <p className="text-gray-800 font-bold text-lg">${totalAmount}</p>
+      </div>
+
+      {/* Payment Options */}
+      <div className="mb-6">
+        <h2 className="text-xl font-semibold mb-2">Payment Method</h2>
+        <div className="flex flex-col space-y-2">
+          <label className="flex items-center">
+            <input
+              type="radio"
+              name="paymentMethod"
+              value="cod"
+              checked={paymentMethod === "cod"}
+              onChange={() => setPaymentMethod("cod")}
+              className="mr-2"
+            />
+            Cash on Delivery (COD)
+          </label>
+          <label className="flex items-center">
+            <input
+              type="radio"
+              name="paymentMethod"
+              value="online"
+              checked={paymentMethod === "online"}
+              onChange={() => setPaymentMethod("online")}
+              className="mr-2"
+            />
+            Online Payment (PayPal)
+          </label>
+        </div>
+
+        {/* PayPal Placeholder */}
+        {paymentMethod === "online" && (
+          <div className="mt-4 p-4 border rounded-lg bg-gray-100">
+            <p className="text-gray-700">
+              PayPal buttons will be displayed here (to be implemented in Milestone 30).
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Place Order Button */}
