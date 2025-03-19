@@ -253,6 +253,15 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 ---
 
+### 📜 Milestone 26: Backend Endpoint for Retrieving User Orders
+✅ Tasks Completed:
+- 🌐 Created a `POST /api/v2/order/orders` endpoint in `routes/order.js` and `controllers/order.js`.
+- 🛠️ Implemented logic to retrieve user `_id` by email and fetch all orders for that user.
+- 📦 Used the `Order` schema to query orders from MongoDB, populating product details (name, price).
+- 🔗 Added the endpoint to return all user orders in the response.
+
+---
+
 ### 🛠️ Tech Stack
 
 # Frontend:

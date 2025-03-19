@@ -6,18 +6,15 @@ const User = require("../model/User");
 exports.placeOrder = catchAsyncErrors(async (req, res, next) => {
   const { email, products, address } = req.body;
 
-  // Validate input
   if (!email || !products || !products.length || !address) {
     return next(new ErrorHandler("Missing required fields: email, products, or address", 400));
   }
 
-  // Retrieve user by email
   const user = await User.findOne({ email });
   if (!user) {
     return next(new ErrorHandler("User not found", 404));
   }
 
-  // Prepare orders (one per product)
   const orders = products.map((product) => ({
     user: user._id,
     products: [
@@ -38,7 +35,6 @@ exports.placeOrder = catchAsyncErrors(async (req, res, next) => {
     status: "Pending",
   }));
 
-  // Save orders to MongoDB
   const createdOrders = await Order.insertMany(orders);
 
   res.status(201).json({
@@ -48,4 +44,24 @@ exports.placeOrder = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-module.exports = { placeOrder };
+exports.getUserOrders = catchAsyncErrors(async (req, res, next) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return next(new ErrorHandler("Email is required", 400));
+  }
+
+  const user = await User.findOne({ email });
+  if (!user) {
+    return next(new ErrorHandler("User not found", 404));
+  }
+
+  const orders = await Order.find({ user: user._id }).populate("products.productId", "name price");
+
+  res.status(200).json({
+    success: true,
+    orders,
+  });
+});
+
+module.exports = { placeOrder, getUserOrders };
