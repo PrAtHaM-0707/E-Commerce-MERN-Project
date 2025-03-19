@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const orderSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "user", 
+    ref: "User",
     required: true,
   },
   products: [
@@ -16,7 +16,6 @@ const orderSchema = new mongoose.Schema({
       quantity: {
         type: Number,
         required: true,
-        min: 1,
       },
     },
   ],
@@ -34,8 +33,17 @@ const orderSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ["Pending", "Processing", "Shipped", "Delivered", "Cancelled"],
     default: "Pending",
+    enum: ["Pending", "Shipped", "Delivered", "Cancelled"],
+  },
+  paymentMethod: {
+    type: String,
+    required: true,
+    enum: ["cod", "paypal"],
+  },
+  paymentDetails: {
+    transactionId: { type: String },
+    status: { type: String },
   },
   createdAt: {
     type: Date,

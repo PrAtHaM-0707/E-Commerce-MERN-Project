@@ -4,10 +4,10 @@ const Order = require("../model/Order");
 const User = require("../model/User");
 
 exports.placeOrder = catchAsyncErrors(async (req, res, next) => {
-  const { email, products, address } = req.body;
+  const { email, products, address, paymentMethod, paymentDetails } = req.body;
 
-  if (!email || !products || !products.length || !address) {
-    return next(new ErrorHandler("Missing required fields: email, products, or address", 400));
+  if (!email || !products || !products.length || !address || !paymentMethod) {
+    return next(new ErrorHandler("Missing required fields: email, products, address, or paymentMethod", 400));
   }
 
   const user = await User.findOne({ email });
@@ -33,6 +33,8 @@ exports.placeOrder = catchAsyncErrors(async (req, res, next) => {
     },
     totalAmount: product.price * product.quantity,
     status: "Pending",
+    paymentMethod, // Add payment method (cod or paypal)
+    paymentDetails: paymentMethod === "paypal" ? paymentDetails : undefined, // Store payment details only for PayPal
   }));
 
   const createdOrders = await Order.insertMany(orders);
@@ -67,18 +69,15 @@ exports.getUserOrders = catchAsyncErrors(async (req, res, next) => {
 exports.cancelOrder = catchAsyncErrors(async (req, res, next) => {
   const { orderId } = req.params;
 
-  // Find the order by ID
   const order = await Order.findById(orderId);
   if (!order) {
     return next(new ErrorHandler("Order not found", 404));
   }
 
-  // Check if already cancelled
   if (order.status === "Cancelled") {
     return next(new ErrorHandler("Order is already cancelled", 400));
   }
 
-  // Update status to Cancelled
   order.status = "Cancelled";
   await order.save();
 
@@ -88,5 +87,3 @@ exports.cancelOrder = catchAsyncErrors(async (req, res, next) => {
     order,
   });
 });
-
-module.exports = { placeOrder, getUserOrders, cancelOrder };
