@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const OrderConfirmation = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
   const { selectedAddress, cart } = state || {};
-  const [paymentMethod, setPaymentMethod] = useState("cod"); // Default to COD
+  const [paymentMethod, setPaymentMethod] = useState("cod");
 
   if (!selectedAddress || !cart) {
     return <p className="text-center text-gray-500">No order data available.</p>;
@@ -19,29 +20,68 @@ const OrderConfirmation = () => {
   const handlePlaceOrder = async () => {
     try {
       const orderData = {
-        email: "user@example.com", // Replace with actual user email later
+        email: "user@example.com", // Replace with actual user email
         products: cart.map((item) => ({
           productId: item.productId._id,
           quantity: item.quantity,
           price: item.productId.price,
         })),
         address: selectedAddress,
+        paymentMethod: "cod", // Add payment method to order data
       };
 
-      if (paymentMethod === "cod") {
-        const response = await axios.post(
-          "http://localhost:5000/api/v2/order/place",
-          orderData,
-          { withCredentials: true }
-        );
-        console.log("COD Order response:", response.data);
-        navigate("/order-success"); // Placeholder route
-      } else {
-        console.log("Online payment selected - PayPal integration pending");
-        // PayPal logic to be added in Milestone 30
-      }
+      const response = await axios.post(
+        "http://localhost:5000/api/v2/order/place",
+        orderData,
+        { withCredentials: true }
+      );
+      console.log("COD Order response:", response.data);
+      navigate("/order-success");
     } catch (error) {
-      console.error("Error placing order:", error);
+      console.error("Error placing COD order:", error);
+    }
+  };
+
+  const createOrder = (data, actions) => {
+    return actions.order.create({
+      purchase_units: [
+        {
+          amount: {
+            value: totalAmount,
+            currency_code: "USD",
+          },
+        },
+      ],
+    });
+  };
+
+  const onApprove = async (data, actions) => {
+    try {
+      const paymentDetails = await actions.order.capture();
+      const orderData = {
+        email: "user@example.com", // Replace with actual user email
+        products: cart.map((item) => ({
+          productId: item.productId._id,
+          quantity: item.quantity,
+          price: item.productId.price,
+        })),
+        address: selectedAddress,
+        paymentMethod: "paypal",
+        paymentDetails: {
+          transactionId: paymentDetails.id,
+          status: paymentDetails.status,
+        },
+      };
+
+      const response = await axios.post(
+        "http://localhost:5000/api/v2/order/place",
+        orderData,
+        { withCredentials: true }
+      );
+      console.log("PayPal Order response:", response.data);
+      navigate("/order-success");
+    } catch (error) {
+      console.error("Error processing PayPal payment:", error);
     }
   };
 
@@ -115,23 +155,34 @@ const OrderConfirmation = () => {
           </label>
         </div>
 
-        {/* PayPal Placeholder */}
+        {/* PayPal Buttons */}
         {paymentMethod === "online" && (
-          <div className="mt-4 p-4 border rounded-lg bg-gray-100">
-            <p className="text-gray-700">
-              PayPal buttons will be displayed here (to be implemented in Milestone 30).
-            </p>
+          <div className="mt-4">
+            <PayPalScriptProvider
+              options={{
+                "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID,
+                currency: "USD",
+              }}
+            >
+              <PayPalButtons
+                createOrder={createOrder}
+                onApprove={onApprove}
+                onError={(err) => console.error("PayPal Error:", err)}
+              />
+            </PayPalScriptProvider>
           </div>
         )}
       </div>
 
-      {/* Place Order Button */}
-      <button
-        onClick={handlePlaceOrder}
-        className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-      >
-        Place Order
-      </button>
+      {/* Place Order Button for COD */}
+      {paymentMethod === "cod" && (
+        <button
+          onClick={handlePlaceOrder}
+          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+        >
+          Place Order
+        </button>
+      )}
     </div>
   );
 };
