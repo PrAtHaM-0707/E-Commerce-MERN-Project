@@ -224,6 +224,15 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 ---
 
+### 📜 Milestone 23: Place Order Button and Select Address Page
+✅ Tasks Completed:
+- 🛒 Added a "Place Order" button on the Cart page that navigates to `/select-address`.
+- 📝 Created a `SelectAddress.jsx` page to display all user addresses with radio button selection and a "Confirm" button.
+- 🌐 Implemented a backend endpoint (`GET /api/v2/user/addresses`) to fetch all addresses for the logged-in user.
+- 🛠️ Created an `Order` model in `backend/model/Order.js` to store order details (user, products, address, total amount, status).
+
+---
+
 ### 🛠️ Tech Stack
 
 # Frontend:

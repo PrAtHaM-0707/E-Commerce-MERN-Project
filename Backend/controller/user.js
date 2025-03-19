@@ -18,18 +18,15 @@ exports.getUserProfile = catchAsyncErrors(async (req, res, next) => {
 exports.addAddress = catchAsyncErrors(async (req, res, next) => {
   const { addressType, address1, address2, city, country, zipCode } = req.body;
 
-  // Validate required fields
   if (!addressType || !address1 || !city || !country || !zipCode) {
     return next(new ErrorHandler("All fields except Address Line 2 are required", 400));
   }
 
-  // Validate addressType
   const allowedTypes = ["Home", "Work", "Other"];
   if (!allowedTypes.includes(addressType)) {
     return next(new ErrorHandler("Address Type must be Home, Work, or Other", 400));
   }
 
-  // Validate zipCode is a number
   if (isNaN(Number(zipCode))) {
     return next(new ErrorHandler("ZIP Code must be a valid number", 400));
   }
@@ -64,3 +61,16 @@ exports.addAddress = catchAsyncErrors(async (req, res, next) => {
     },
   });
 });
+
+exports.getAddresses = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findById(req.user.id);
+  if (!user) {
+    return next(new ErrorHandler("User not found", 404));
+  }
+  res.status(200).json({
+    success: true,
+    addresses: user.addresses || [],
+  });
+});
+
+module.exports = { getUserProfile, addAddress, getAddresses }; 
