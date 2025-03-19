@@ -1,8 +1,10 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const OrderConfirmation = () => {
   const { state } = useLocation();
+  const navigate = useNavigate();
   const { selectedAddress, cart } = state || {};
 
   if (!selectedAddress || !cart) {
@@ -13,9 +15,29 @@ const OrderConfirmation = () => {
     .reduce((sum, item) => sum + item.productId.price * item.quantity, 0)
     .toFixed(2);
 
-  const handlePlaceOrder = () => {
-    console.log("Order placed with:", { cart, selectedAddress, totalAmount });
-    // Placeholder for backend integration in future milestones
+  const handlePlaceOrder = async () => {
+    try {
+      const orderData = {
+        email: "user@example.com", // Replace with actual user email (e.g., from auth context)
+        products: cart.map((item) => ({
+          productId: item.productId._id,
+          quantity: item.quantity,
+          price: item.productId.price,
+        })),
+        address: selectedAddress,
+      };
+
+      const response = await axios.post(
+        "http://localhost:5000/api/v2/order/place",
+        orderData,
+        { withCredentials: true }
+      );
+
+      console.log("Order response:", response.data);
+      navigate("/order-success"); // Placeholder route
+    } catch (error) {
+      console.error("Error placing order:", error);
+    }
   };
 
   return (

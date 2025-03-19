@@ -243,6 +243,16 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 ---
 
+### 📜 Milestone 25: Backend Endpoint for Placing Orders
+✅ Tasks Completed:
+- 🌐 Created a `POST /api/v2/order/place` endpoint in `routes/order.js` and `controllers/order.js`.
+- 🛠️ Implemented logic to retrieve user `_id` by email and create separate orders for each product with the same address.
+- 📦 Used the `Order` schema to store order details in MongoDB.
+- 🔗 Updated `server.js` to register the new order routes.
+- 🚀 Modified `OrderConfirmation.jsx` to call the endpoint with cart, address, and user email data.
+
+---
+
 ### 🛠️ Tech Stack
 
 # Frontend:
