@@ -5,6 +5,7 @@ import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
 import SelectAddress from "./pages/SelectAddress";
 import OrderConfirmation from "./pages/OrderConfirmation";
+import MyOrders from "./pages/MyOrders"; // Add this import
 import Navbar from "./components/auth/Navbar";
 import "./App.css";
 
@@ -23,7 +24,8 @@ const App = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/add-address" element={<AddAddress />} />
         <Route path="/select-address" element={<SelectAddress />} />
-        <Route path="/order-confirmation" element={<OrderConfirmation />} /> 
+        <Route path="/order-confirmation" element={<OrderConfirmation />} />
+        <Route path="/my-orders" element={<MyOrders />} /> {/* Add this line */}
       </Routes>
     </BrowserRouter>
   );
