@@ -34,6 +34,11 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
+          <Link to="/my-orders" className="hover:text-gray-400" aria-label="My Orders">
+            My Orders
+          </Link>
+        </li> {/* Add this */}
+        <li>
           <Link to="/login" className="hover:text-gray-400" aria-label="Login">
             Login
           </Link>
