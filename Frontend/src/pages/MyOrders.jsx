@@ -25,6 +25,25 @@ const MyOrders = () => {
     fetchOrders();
   }, []);
 
+  const handleCancelOrder = async (orderId) => {
+    try {
+      const response = await axios.put(
+        `http://localhost:5000/api/v2/order/cancel/${orderId}`,
+        {},
+        { withCredentials: true }
+      );
+      setOrders((prevOrders) =>
+        prevOrders.map((order) =>
+          order._id === orderId ? { ...order, status: "Cancelled" } : order
+        )
+      );
+      console.log("Order cancelled:", response.data);
+    } catch (err) {
+      console.error("Error cancelling order:", err);
+      setError("Failed to cancel order");
+    }
+  };
+
   if (loading) return <p className="text-center text-gray-500">Loading orders...</p>;
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
@@ -81,6 +100,16 @@ const MyOrders = () => {
               <p className="mt-2 text-gray-800 font-bold">
                 Total: ${order.totalAmount.toFixed(2)}
               </p>
+
+              {/* Cancel Button */}
+              {order.status !== "Cancelled" && (
+                <button
+                  onClick={() => handleCancelOrder(order._id)}
+                  className="mt-2 bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600"
+                >
+                  Cancel Order
+                </button>
+              )}
             </div>
           ))}
         </div>

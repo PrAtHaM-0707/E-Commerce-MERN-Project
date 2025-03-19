@@ -271,6 +271,15 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 ---
 
+### 📜 Milestone 28: Cancel Order Functionality
+✅ Tasks Completed:
+- 📝 Added a "Cancel Order" button to each order in `MyOrders.jsx`, displayed only if the order isn’t "Cancelled".
+- 🌐 Created a `PUT /api/v2/order/cancel/:orderId` endpoint in `routes/order.js` and `controllers/order.js`.
+- 🛠️ Implemented logic to update an order’s status to "Cancelled" using the order ID.
+- 🔗 Updated the frontend to call the cancel endpoint and reflect the status change.
+
+---
+
 ### 🛠️ Tech Stack
 
 # Frontend:
