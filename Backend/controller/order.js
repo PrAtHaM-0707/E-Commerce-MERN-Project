@@ -64,4 +64,29 @@ exports.getUserOrders = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-module.exports = { placeOrder, getUserOrders };
+exports.cancelOrder = catchAsyncErrors(async (req, res, next) => {
+  const { orderId } = req.params;
+
+  // Find the order by ID
+  const order = await Order.findById(orderId);
+  if (!order) {
+    return next(new ErrorHandler("Order not found", 404));
+  }
+
+  // Check if already cancelled
+  if (order.status === "Cancelled") {
+    return next(new ErrorHandler("Order is already cancelled", 400));
+  }
+
+  // Update status to Cancelled
+  order.status = "Cancelled";
+  await order.save();
+
+  res.status(200).json({
+    success: true,
+    message: "Order cancelled successfully",
+    order,
+  });
+});
+
+module.exports = { placeOrder, getUserOrders, cancelOrder };
