@@ -280,6 +280,15 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 ---
 
+### 📜 Milestone 29: Payment Options with PayPal Setup
+✅ Tasks Completed:
+- 📝 Added payment options (COD and Online Payment) with radio buttons to `OrderConfirmation.jsx`.
+- 🌐 Set up UI to display a PayPal placeholder when "Online Payment" is selected.
+- 🛠️ Configured COD orders to use the `/place` endpoint; online payment logs a placeholder message.
+- 🔗 Used existing PayPal sandbox accounts and obtained the Client ID for future integration.
+
+---
+
 ### 🛠️ Tech Stack
 
 # Frontend:
