@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LoginPage, SignupPage, Home, CreateProduct, MyProducts, AddAddress } from "./Routes";
-import ProductInfo from "./pages/ProductInfo"; 
-import Cart from "./pages/Cart"; 
-import Profile from "./pages/Profile"; 
+import ProductInfo from "./pages/ProductInfo";
+import Cart from "./pages/Cart";
+import Profile from "./pages/Profile";
+import SelectAddress from "./pages/SelectAddress";
 import Navbar from "./components/auth/Navbar";
 import "./App.css";
 
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/add-address" element={<AddAddress />} />
+        <Route path="/select-address" element={<SelectAddress />} /> 
       </Routes>
     </BrowserRouter>
   );

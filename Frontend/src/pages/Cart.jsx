@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom"; // Add this import
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
@@ -9,7 +10,7 @@ const Cart = () => {
     const fetchCart = async () => {
       try {
         const response = await axios.get("http://localhost:5000/api/cart", {
-          withCredentials: true, // Send cookies with the request
+          withCredentials: true,
         });
         setCart(response.data.cart);
         setLoading(false);
@@ -18,17 +19,16 @@ const Cart = () => {
         setLoading(false);
       }
     };
-
     fetchCart();
   }, []);
 
   const handleIncreaseQuantity = async (productId) => {
     try {
-      await axios.put(`http://localhost:5000/api/cart/${productId}`, {
-        action: "increase",
-      }, {
-        withCredentials: true,
-      });
+      await axios.put(
+        `http://localhost:5000/api/cart/${productId}`,
+        { action: "increase" },
+        { withCredentials: true }
+      );
       const response = await axios.get("http://localhost:5000/api/cart", {
         withCredentials: true,
       });
@@ -40,11 +40,11 @@ const Cart = () => {
 
   const handleDecreaseQuantity = async (productId) => {
     try {
-      await axios.put(`http://localhost:5000/api/cart/${productId}`, {
-        action: "decrease",
-      }, {
-        withCredentials: true,
-      });
+      await axios.put(
+        `http://localhost:5000/api/cart/${productId}`,
+        { action: "decrease" },
+        { withCredentials: true }
+      );
       const response = await axios.get("http://localhost:5000/api/cart", {
         withCredentials: true,
       });
@@ -72,7 +72,7 @@ const Cart = () => {
                 <h2 className="text-lg font-semibold text-gray-800">{item.productId.name}</h2>
                 <p className="text-gray-600">Price: ${item.productId.price}</p>
                 <p className="text-gray-600">
-                  Quantity: 
+                  Quantity:
                   <button
                     className="ml-2 px-2 bg-gray-200 rounded hover:bg-gray-300"
                     onClick={() => handleDecreaseQuantity(item.productId._id)}
@@ -94,10 +94,16 @@ const Cart = () => {
             </div>
           ))}
           <p className="mt-4 font-bold text-gray-800">
-            Total Amount: ${cart
-              .reduce((sum, item) => sum + item.productId.price * item.quantity, 0)
-              .toFixed(2)}
+            Total Amount: $
+            {cart.reduce((sum, item) => sum + item.productId.price * item.quantity, 0).toFixed(2)}
           </p>
+          <div className="mt-4">
+            <Link to="/select-address">
+              <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                Place Order
+              </button>
+            </Link>
+          </div>
         </div>
       )}
     </div>
