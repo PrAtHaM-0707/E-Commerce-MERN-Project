@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+// frontend/src/pages/Cart.jsx
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom"; // Add this import
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux"; // Add useSelector
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
+  const email = useSelector((state) => state.user.email); // Access email from Redux
 
   useEffect(() => {
     const fetchCart = async () => {
@@ -59,6 +62,7 @@ const Cart = () => {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4 text-gray-800">Your Cart</h1>
+      <p className="text-gray-600 mb-4">Logged in as: {email || "Not logged in"}</p> {/* Display email */}
       {cart.length === 0 ? (
         <p className="text-gray-500">Your cart is empty.</p>
       ) : (

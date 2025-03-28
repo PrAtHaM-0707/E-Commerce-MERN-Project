@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from "react";
+// frontend/src/pages/MyOrders.jsx
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { useSelector } from "react-redux"; // Add useSelector
 
 const MyOrders = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const email = useSelector((state) => state.user.email); // Access email from Redux
 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
         const response = await axios.post(
           "http://localhost:5000/api/v2/order/orders",
-          { email: "user@example.com" }, // Replace with actual user email
+          { email: email || "user@example.com" }, // Use Redux email
           { withCredentials: true }
         );
         setOrders(response.data.orders);
@@ -23,7 +26,7 @@ const MyOrders = () => {
       }
     };
     fetchOrders();
-  }, []);
+  }, [email]); // Add email as dependency
 
   const handleCancelOrder = async (orderId) => {
     try {
@@ -50,6 +53,7 @@ const MyOrders = () => {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4 text-gray-800">My Orders</h1>
+      <p className="text-gray-600 mb-4">Logged in as: {email || "Not logged in"}</p> {/* Display email */}
       {orders.length === 0 ? (
         <p className="text-gray-500">No orders found.</p>
       ) : (
@@ -66,8 +70,6 @@ const MyOrders = () => {
               <p className="text-gray-600">
                 Placed on: {new Date(order.createdAt).toLocaleDateString()}
               </p>
-
-              {/* Products */}
               <div className="mt-2">
                 <h3 className="text-md font-semibold">Products:</h3>
                 {order.products.map((item) => (
@@ -85,8 +87,6 @@ const MyOrders = () => {
                   </div>
                 ))}
               </div>
-
-              {/* Address */}
               <div className="mt-2">
                 <h3 className="text-md font-semibold">Delivery Address:</h3>
                 <p className="text-gray-600">
@@ -95,13 +95,9 @@ const MyOrders = () => {
                   {order.address.addressType})
                 </p>
               </div>
-
-              {/* Total */}
               <p className="mt-2 text-gray-800 font-bold">
                 Total: ${order.totalAmount.toFixed(2)}
               </p>
-
-              {/* Cancel Button */}
               {order.status !== "Cancelled" && (
                 <button
                   onClick={() => handleCancelOrder(order._id)}
