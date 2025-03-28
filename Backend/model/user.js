@@ -60,4 +60,9 @@ const userSchema = new mongoose.Schema({
   cart: [cartSchema],
 });
 
+// Add comparePassword method
+userSchema.methods.comparePassword = async function (candidatePassword) {
+  return await bcrypt.compare(candidatePassword, this.password);
+};
+
 module.exports = mongoose.models.user || mongoose.model("user", userSchema);
