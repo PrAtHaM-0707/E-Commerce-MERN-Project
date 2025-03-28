@@ -1,7 +1,8 @@
-const ErrorHandler = require("../utils/ErrorHandler");
-const catchAsyncErrors = require("./catchAsyncError");
+// backend/middleware/auth.js
 const jwt = require("jsonwebtoken");
 const User = require("../model/User");
+const ErrorHandler = require("../utils/ErrorHandler");
+const catchAsyncErrors = require("./catchAsyncError");
 
 const auth = catchAsyncErrors(async (req, res, next) => {
   const { token } = req.cookies;
@@ -10,7 +11,7 @@ const auth = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Please login to access this resource", 401));
   }
 
-  const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+  const decoded = jwt.verify(token, process.env.JWT_SECRET || "your-secret-key"); // Match login secret
   if (!decoded) {
     return next(new ErrorHandler("Invalid token", 401));
   }

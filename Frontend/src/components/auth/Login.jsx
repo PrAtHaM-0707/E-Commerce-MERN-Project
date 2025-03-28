@@ -1,16 +1,16 @@
 // frontend/src/components/auth/Login.jsx
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useDispatch } from "react-redux"; 
-import { setEmail } from "../../store/store"; 
+import axios from "../../axiosConfig"; // Use custom axios
+import { useDispatch } from "react-redux";
+//import { setEmail } from "../../store/store";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const dispatch = useDispatch(); 
-  const navigate = useNavigate(); 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,9 +20,8 @@ const Login = () => {
         password,
       });
       console.log(response.data);
-     
       dispatch(setEmail(email));
-      navigate("/"); 
+      navigate("/");
     } catch (error) {
       setError("There was an error logging in. Please check your credentials.");
       console.error("There was an error logging in!", error);
@@ -38,7 +37,7 @@ const Login = () => {
       </div>
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6" onSubmit={handleSubmit}> {/* Add onSubmit */}
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email address
@@ -50,7 +49,7 @@ const Login = () => {
                   placeholder="Enter email"
                   autoComplete="email"
                   required
-                  value={email} // Add value to control input
+                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
@@ -67,7 +66,7 @@ const Login = () => {
                   placeholder="Enter password"
                   autoComplete="current-password"
                   required
-                  value={password} 
+                  value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 />
@@ -75,7 +74,7 @@ const Login = () => {
             </div>
             <div>
               <button
-                type="submit" 
+                type="submit"
                 className="relative w-full h-10 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
               >
                 Sign in
@@ -84,7 +83,7 @@ const Login = () => {
           </form>
           {error && <p className="text-center text-red-900">{error}</p>}
           <p className="text-center text-red-900">
-            Don't have an account? <Link to="/signup" className="text-blue-600">Sign up</Link>
+            Dont have an account? <Link to="/signup" className="text-blue-600">Sign up</Link>
           </p>
         </div>
       </div>

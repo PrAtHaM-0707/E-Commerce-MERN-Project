@@ -1,29 +1,29 @@
 // frontend/src/pages/Profile.jsx
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import { useSelector } from "react-redux"; // Add useSelector
+import { Link, useNavigate } from "react-router-dom"; // Add useNavigate
+import axios from "../../axiosConfig"; // Use custom axios
+import { useSelector } from "react-redux";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const email = useSelector((state) => state.user.email); // Access email from Redux
+  const email = useSelector((state) => state.user.email);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/v2/user/profile", {
-          withCredentials: true,
-        });
+        const response = await axios.get("http://localhost:8000/api/v2/user/profile"); // Port 8000
         setUser(response.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching user profile:", error);
         setLoading(false);
+        navigate("/login"); // Redirect to login on auth failure
       }
     };
     fetchUserProfile();
-  }, []);
+  }, [navigate]);
 
   if (loading) return <p className="text-center text-gray-500">Loading profile...</p>;
   if (!user) return <p className="text-center text-red-500">Failed to load profile. Please log in.</p>;
@@ -40,8 +40,8 @@ const Profile = () => {
           />
           <div>
             <h2 className="text-lg font-semibold text-gray-800">{user.name}</h2>
-            <p className="text-gray-600">Redux Email: {email || "Not logged in"}</p> {/* Display Redux email */}
-            <p className="text-gray-600">API Email: {user.email}</p> {/* Keep API email */}
+            <p className="text-gray-600">Redux Email: {email || "Not logged in"}</p>
+            <p className="text-gray-600">API Email: {user.email}</p>
           </div>
         </div>
       </div>

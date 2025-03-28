@@ -1,40 +1,34 @@
 // frontend/src/pages/Cart.jsx
 import { useState, useEffect } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux"; // Add useSelector
+import axios from "../../axiosConfig"; // Use custom axios
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
-  const email = useSelector((state) => state.user.email); // Access email from Redux
+  const email = useSelector((state) => state.user.email);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCart = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/cart", {
-          withCredentials: true,
-        });
+        const response = await axios.get("http://localhost:8000/api/cart");
         setCart(response.data.cart);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching cart:", error);
         setLoading(false);
+        navigate("/login"); // Redirect to login on auth failure
       }
     };
     fetchCart();
-  }, []);
+  }, [navigate]);
 
   const handleIncreaseQuantity = async (productId) => {
     try {
-      await axios.put(
-        `http://localhost:5000/api/cart/${productId}`,
-        { action: "increase" },
-        { withCredentials: true }
-      );
-      const response = await axios.get("http://localhost:5000/api/cart", {
-        withCredentials: true,
-      });
+      await axios.put(`http://localhost:8000/api/cart/${productId}`, { action: "increase" });
+      const response = await axios.get("http://localhost:8000/api/cart");
       setCart(response.data.cart);
     } catch (error) {
       console.error("Error increasing quantity:", error);
@@ -43,14 +37,8 @@ const Cart = () => {
 
   const handleDecreaseQuantity = async (productId) => {
     try {
-      await axios.put(
-        `http://localhost:5000/api/cart/${productId}`,
-        { action: "decrease" },
-        { withCredentials: true }
-      );
-      const response = await axios.get("http://localhost:5000/api/cart", {
-        withCredentials: true,
-      });
+      await axios.put(`http://localhost:8000/api/cart/${productId}`, { action: "decrease" });
+      const response = await axios.get("http://localhost:8000/api/cart");
       setCart(response.data.cart);
     } catch (error) {
       console.error("Error decreasing quantity:", error);
@@ -62,7 +50,7 @@ const Cart = () => {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4 text-gray-800">Your Cart</h1>
-      <p className="text-gray-600 mb-4">Logged in as: {email || "Not logged in"}</p> {/* Display email */}
+      <p className="text-gray-600 mb-4">Logged in as: {email || "Not logged in"}</p>
       {cart.length === 0 ? (
         <p className="text-gray-500">Your cart is empty.</p>
       ) : (
