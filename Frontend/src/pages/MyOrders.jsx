@@ -1,40 +1,37 @@
 // frontend/src/pages/MyOrders.jsx
 import { useState, useEffect } from "react";
-import axios from "axios";
-import { useSelector } from "react-redux"; // Add useSelector
+import axios from "../../axiosConfig"; // Use custom axios
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom"; // Add useNavigate
 
 const MyOrders = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const email = useSelector((state) => state.user.email); // Access email from Redux
+  const email = useSelector((state) => state.user.email);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.post(
-          "http://localhost:5000/api/v2/order/orders",
-          { email: email || "user@example.com" }, // Use Redux email
-          { withCredentials: true }
-        );
+        const response = await axios.post("http://localhost:8000/api/v2/order/orders", {
+          email: email || "user@example.com",
+        });
         setOrders(response.data.orders);
         setLoading(false);
       } catch (err) {
         setError("Failed to fetch orders");
         setLoading(false);
         console.error("Error fetching orders:", err);
+        navigate("/login"); // Redirect to login on auth failure
       }
     };
     fetchOrders();
-  }, [email]); // Add email as dependency
+  }, [email, navigate]);
 
   const handleCancelOrder = async (orderId) => {
     try {
-      const response = await axios.put(
-        `http://localhost:5000/api/v2/order/cancel/${orderId}`,
-        {},
-        { withCredentials: true }
-      );
+      const response = await axios.put(`http://localhost:8000/api/v2/order/cancel/${orderId}`, {});
       setOrders((prevOrders) =>
         prevOrders.map((order) =>
           order._id === orderId ? { ...order, status: "Cancelled" } : order
@@ -53,37 +50,25 @@ const MyOrders = () => {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4 text-gray-800">My Orders</h1>
-      <p className="text-gray-600 mb-4">Logged in as: {email || "Not logged in"}</p> {/* Display email */}
+      <p className="text-gray-600 mb-4">Logged in as: {email || "Not logged in"}</p>
       {orders.length === 0 ? (
         <p className="text-gray-500">No orders found.</p>
       ) : (
         <div>
           {orders.map((order) => (
-            <div
-              key={order._id}
-              className="border p-4 mb-4 rounded-lg bg-white shadow-sm"
-            >
-              <h2 className="text-lg font-semibold text-gray-800">
-                Order ID: {order._id}
-              </h2>
+            <div key={order._id} className="border p-4 mb-4 rounded-lg bg-white shadow-sm">
+              <h2 className="text-lg font-semibold text-gray-800">Order ID: {order._id}</h2>
               <p className="text-gray-600">Status: {order.status}</p>
-              <p className="text-gray-600">
-                Placed on: {new Date(order.createdAt).toLocaleDateString()}
-              </p>
+              <p className="text-gray-600">Placed on: {new Date(order.createdAt).toLocaleDateString()}</p>
               <div className="mt-2">
                 <h3 className="text-md font-semibold">Products:</h3>
                 {order.products.map((item) => (
-                  <div
-                    key={item.productId._id}
-                    className="flex justify-between mt-1"
-                  >
+                  <div key={item.productId._id} className="flex justify-between mt-1">
                     <div>
                       <p className="text-gray-800">{item.productId.name}</p>
                       <p className="text-gray-600">Quantity: {item.quantity}</p>
                     </div>
-                    <p className="text-gray-800">
-                      ${(item.productId.price * item.quantity).toFixed(2)}
-                    </p>
+                    <p className="text-gray-800">${(item.productId.price * item.quantity).toFixed(2)}</p>
                   </div>
                 ))}
               </div>
@@ -95,9 +80,7 @@ const MyOrders = () => {
                   {order.address.addressType})
                 </p>
               </div>
-              <p className="mt-2 text-gray-800 font-bold">
-                Total: ${order.totalAmount.toFixed(2)}
-              </p>
+              <p className="mt-2 text-gray-800 font-bold">Total: ${order.totalAmount.toFixed(2)}</p>
               {order.status !== "Cancelled" && (
                 <button
                   onClick={() => handleCancelOrder(order._id)}
