@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+// frontend/src/pages/Profile.jsx
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useSelector } from "react-redux"; // Add useSelector
 
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const email = useSelector((state) => state.user.email); // Access email from Redux
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -19,17 +22,14 @@ const Profile = () => {
         setLoading(false);
       }
     };
-
     fetchUserProfile();
   }, []);
 
   if (loading) return <p className="text-center text-gray-500">Loading profile...</p>;
-
   if (!user) return <p className="text-center text-red-500">Failed to load profile. Please log in.</p>;
 
   return (
     <div className="container mx-auto p-4">
-      {/* Profile Section */}
       <div className="bg-white shadow-md rounded-lg p-6 mb-6">
         <h1 className="text-2xl font-bold mb-4 text-gray-800">My Profile</h1>
         <div className="flex items-center space-x-4">
@@ -40,12 +40,11 @@ const Profile = () => {
           />
           <div>
             <h2 className="text-lg font-semibold text-gray-800">{user.name}</h2>
-            <p className="text-gray-600">{user.email}</p>
+            <p className="text-gray-600">Redux Email: {email || "Not logged in"}</p> {/* Display Redux email */}
+            <p className="text-gray-600">API Email: {user.email}</p> {/* Keep API email */}
           </div>
         </div>
       </div>
-
-      {/* Addresses Section */}
       <div className="bg-white shadow-md rounded-lg p-6">
         <h2 className="text-xl font-bold mb-4 text-gray-800">My Addresses</h2>
         {user.addresses.length === 0 ? (

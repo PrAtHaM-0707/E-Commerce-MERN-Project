@@ -308,6 +308,16 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 ---
 
+### 📜 Milestone 32: Global State Management with Redux - Email Integration
+✅ Tasks Completed:
+- 🔧 Updated `Login.jsx` to dispatch the user's email to the Redux store using `useDispatch` and `setEmail` after successful login.
+- 📡 Accessed the email in `Profile.jsx`, `MyOrders.jsx`, `Cart.jsx`, and `Home.jsx` using `useSelector`.
+- 🛠️ Used the Redux email in `MyOrders.jsx` API call instead of hardcoding.
+- 📝 Committed and pushed all changes to the GitHub repository.
+- ✅ Tested the application to confirm the email is stored and displayed across pages after login.
+
+---
+
 ### 🛠️ Tech Stack
 
 # Frontend:
