@@ -318,6 +318,16 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 ---
 
+### 📜 Milestone 33: JWT Token Creation and Cookie Storage
+✅ Tasks Completed:
+- 📦 Installed `jsonwebtoken` in the backend.
+- 🔑 Added `/login` route in `routes/user.js` to create a JWT token with `id` and `email`.
+- 🍪 Stored the token in an HTTP-only cookie with a 1-hour expiration.
+- 🛠️ Added `comparePassword` method to `User.js` for password verification.
+- ✅ Tested the login endpoint to confirm the cookie is set in the browser.
+
+---
+
 ### 🛠️ Tech Stack
 
 # Frontend:
