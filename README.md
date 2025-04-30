@@ -69,7 +69,7 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ---
 
 ### 📜 Milestone 7: Product Card Component & Homepage
-✅ Tasks Completed in Milestone 7:
+✅ Tasks Completed:
 - 🛠 Developed a reusable Product Card Component for displaying products.
 - 📄 Designed the homepage layout to showcase product listings.
 - 🔧 Implemented dynamic components that accept product details as props.
@@ -78,7 +78,7 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ---
 
 ### 📜 Milestone 8: Product Input Form
-✅ Tasks Completed in Milestone 8:
+✅ Tasks Completed:
 - 📝 Created a frontend form to allow users to add new products.
 - 🖼️ Enabled multiple image uploads for products.
 - 🎨 Designed an intuitive UI for product input.
@@ -87,7 +87,7 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ---
 
 ### 📜 Milestone 9: Product Schema & API Endpoint
-✅ Tasks Completed in Milestone 9:
+✅ Tasks Completed:
 - 🛠️ Created a Mongoose schema to define the product structure (e.g., name, description, price, image URL).
 - 🔎 Ensured proper validation for required fields and correct data types.
 - 🌐 Built a POST endpoint to receive and store product details in MongoDB.
@@ -96,7 +96,7 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ---
 
 ### 📜 Milestone 10: Display Products at Frontend
-✅ Tasks Completed in Milestone 10:
+✅ Tasks Completed:
 - 📝 Created a GET endpoint to fetch all product data from the database.
 - 🔙 Implemented frontend functionality to retrieve product data.
 - 🖼️ Displayed products dynamically by passing them to the product card component.
@@ -104,7 +104,7 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ---
 
 ### 📜 Milestone 11: Personalized Products Page
-✅ Tasks Completed in Milestone 11:
+✅ Tasks Completed:
 - 🌟 Created a "My Products" page to display products added by the logged-in user.
 - 📝 Implemented a backend API endpoint to filter and fetch products based on user email.
 - 🔙 Fetched and displayed filtered products dynamically on the frontend.
@@ -123,7 +123,7 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ---
 
 ### 📜 Milestone 13: Delete Product Functionality
-✅ Tasks Completed in Milestone 13:
+✅ Tasks Completed:
 - 🗑️ Implemented the delete product feature on the frontend.
 - 🚀 Created a backend API endpoint to remove a product from MongoDB using its ID.
 - 🖼️ Added a delete button on the product card in the frontend.
@@ -132,7 +132,7 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ---
 
 ### 📜 Milestone 14: Delete Product Functionality
-✅ Tasks Completed in Milestone 14:
+✅ Tasks Completed:
 - 🛠️ Implemented a delete button on the product card.
 - 🔗 Created a backend API endpoint to delete products using their ID.
 - 🗑️ Used MongoDB’s deleteOne() method to remove the product from the database.
@@ -143,7 +143,7 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ---
 
 ### 📜 Milestone 15: Navbar Component
-✅ Tasks Completed in Milestone 15:
+✅ Tasks Completed:
 - 🏗️ Created a reusable Navbar component for navigation across all pages.
 - 🔗 Implemented navigation links for Home, My Products, Add Product, Login, and Sign Up.
 - 🎨 Styled the Navbar using Tailwind CSS for a modern and responsive UI.
@@ -201,7 +201,7 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ---
 
 ### 📜 Milestone 21: Address Form Frontend Page
-✅ Tasks Completed in Milestone 21:
+✅ Tasks Completed:
 - 📝 Created a frontend `AddAddress` page to allow users to input address details.
 - 🏠 Included fields for country, city, address line 1, address line 2 (optional), ZIP code, and address type (Home/Work/Other).
 - 🔄 Used React’s `useState` hook to manage the form input state.
@@ -214,7 +214,7 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 ---
 
 ### 📜 Milestone 22: Backend Endpoint for Saving Address
-✅ Tasks Completed in Milestone 22:
+✅ Tasks Completed:
 - 🌐 Created a `POST /api/v2/user/address` endpoint in `routes/user.js` to receive address data from the frontend.
 - 🛠️ Implemented the `addAddress` function in `controller/user.js` to add the new address to the `addresses` array in the `User` model.
 - 🔒 Protected the endpoint with JWT authentication using the `auth` middleware.
@@ -328,14 +328,33 @@ Welcome to the E-commerce-Follow-Along project! 🚀 This full-stack E-commerce 
 
 ---
 
-### 🛠️ Tech Stack
+### 📜 Milestone 34: JWT Token Validation
+✅ Tasks Completed:
+- 🔑 Implemented frontend logic to extract the JWT token from the browser cookie and send it to the backend in API requests.
+- 🛠️ Created a backend middleware function to validate the JWT token received from the client.
+- 🔒 Applied the middleware to protect routes, ensuring users cannot access pages without a valid login.
+- ✅ Tested the authentication flow to confirm secure access to protected pages.
 
-# Frontend:
-⚛️ React.js / Next.js
-🎨 Tailwind CSS / Bootstrap
-🛠️ Redux for state management
+---
 
-# Backend:
-🖥️ Node.js / Express.js
-🟢 MongoDB
+### 📜 Milestone 35: Project Deployment
+✅ Tasks Completed:
+- 🌐 Deployed the backend to a hosting platform (e.g., Heroku) and obtained the deployment link.
+- 🔗 Updated the frontend to replace localhost backend URLs with the deployed backend URL.
+- 🚀 Deployed the frontend to a hosting platform (e.g., Vercel) and obtained the deployment link.
+- ✅ Pushed the final code to the GitHub repository, ensuring it is publicly accessible.
+- 🧪 Tested the deployed application to confirm that authentication, product listings, cart, orders, and payments function correctly.
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend:
+⚛️ React.js / Next.js  
+🎨 Tailwind CSS / Bootstrap  
+🛠️ Redux for state management  
+
+### Backend:
+🖥️ Node.js / Express.js  
+🟢 MongoDB  
 🔑 JWT Authentication
